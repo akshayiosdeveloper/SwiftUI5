@@ -16,7 +16,6 @@ struct ContentView: View {
                 Text("Cupertino, CA")
                     .font(.system(size: 32,weight: .medium))
                     .foregroundColor(.white)
-                    .background(.red)
                     .padding()
                 VStack(spacing:8) {
                     Image(systemName: "cloud.sun.fill")
@@ -29,6 +28,15 @@ struct ContentView: View {
                         .foregroundColor(.white)
                 }
                 Spacer()
+                HStack(spacing:8) {
+                    WeatherView(dayOfWeek: "MON", imageName: "cloud.sun.fill", temperature: "44°")
+                    WeatherView(dayOfWeek: "TUE", imageName: "sun.max.fill", temperature: "50°")
+                    WeatherView(dayOfWeek: "WED", imageName: "wind.snow", temperature: "-3°")
+                    WeatherView(dayOfWeek: "THU", imageName: "sunset.fill", temperature: "12°")
+                    WeatherView(dayOfWeek: "FRI", imageName: "cloud.rain.fill", temperature: "5°")
+                    WeatherView(dayOfWeek: "SAT", imageName: "snow", temperature: "76°")
+                }
+                Spacer()
             }
         }
         
@@ -37,4 +45,25 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+}
+
+struct WeatherView: View {
+    var dayOfWeek: String
+    var imageName: String
+    var temperature: String
+    var body: some View {
+        VStack {
+            Text(dayOfWeek)
+                .font(.system(size: 16,weight: .medium))
+                .foregroundStyle(.white)
+            Image(systemName: imageName)
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 40,height: 40)
+            Text(temperature)
+                .font(.system(size: 30,weight: .medium))
+                .foregroundColor(.white)
+        }
+    }
 }
