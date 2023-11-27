@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ZStack{
+        ZStack {
             LinearGradient(gradient: Gradient(colors: [Color.blue, Color.white]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 .edgesIgnoringSafeArea(.all)
             VStack {
@@ -36,6 +36,15 @@ struct ContentView: View {
                     WeatherView(dayOfWeek: "FRI", imageName: "cloud.rain.fill", temperature: "5°")
                     WeatherView(dayOfWeek: "SAT", imageName: "snow", temperature: "76°")
                 }
+                Spacer()
+                
+                Button(action: {
+                    print("Button clicked")
+                }, label: {
+                    Text("Change the button")
+                        .frame(width: 280,height: 50)
+                        .background(.white)
+                })
                 Spacer()
             }
         }
